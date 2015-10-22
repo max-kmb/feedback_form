@@ -1,0 +1,72 @@
+<script src="hw4.js"></script>
+</head>
+<body>
+<section>
+    <table>
+  <form>
+        <tr>
+            <td class="first">Post to</td>
+
+            <!-- create two post to buttons -->
+            <td class="second"><input id="entire" type="radio" name="post"
+                value="entire" checked>Entire Class <input type="radio"
+                id="individual" name="post" value="individual">Individual
+                Student(s)/instructor(s)</td>
+        </tr>
+
+        <tr>
+            <td class="first">Select Folder(s)</td>
+            <td class="second">
+                <!-- create six homework checkboxes -->
+                <div class="hw">
+                    <input id="hw1" type="checkbox"><label for="hw1">hw1</label>
+                    <input id="hw2" type="checkbox"><label for="hw2">hw2</label>
+                    <input id="hw3" type="checkbox"><label for="hw3">hw3</label>
+                    <input id="hw4" type="checkbox"><label for="hw4">hw4</label>
+                    <input id="hw5" type="checkbox"><label for="hw5">hw5</label>
+                    <input id="hw6" type="checkbox"><label for="hw6">hw6</label>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="first">Summary
+                <div style="font: 10px Arial">(100 charactors or less)</div>
+            </td>
+
+                <td class="second"><input id="summary" type="text" size="25"
+                value="Enter a one line summary...!" onclick="this.value='';"></td>
+        </tr>
+
+        <tr>
+            <td class="first">Details</td>
+
+            <!-- create detail text area. -->
+            <td class="second"><textarea id="details" name="textarea"
+                    rows="10" cols="50" wrap='off'></textarea></td>
+        </tr>
+
+        <tr>
+            <td class="first">Posting Options</td>
+
+            <!-- create two option check boxes -->
+            <td><input id="option1" type="checkbox"> Make this an
+                announcement (note appears on the course page)</br> <input id="option2"
+                type="checkbox"> Send email notifications immediately
+                (bypassing student's email preferences, if neccesory)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+
+            <td>
+                <input id="post" type="submit" value="Post My Note!" onClick="check()">
+                <input id="cancel" type="reset" value="Cancel" />
+            </td>
+                 </form>
+    </table>
+</section>
+
+</body>
+
+</html>

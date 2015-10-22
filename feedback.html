@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<link rel="icon" type="image/ico" href="feedback.ico" />
+<title>Ваш отзыв</title>
+<body>
+<h3>Отправка отзыва:</h3>
+<?php include "conndb.php"; if($result = $link->query("select * from categories")) {
+    $result_row = $link->query("select count(*) from categories");
+    $res_row = $result_row->fetch_row();
+    $items = array();
+    while($row = $result->fetch_assoc()) { $items[] = $row; }}?>
+<form action="form_act.php" method="post">
+   <p>ФИО <font color="red"><sup> * </sup></font>: <br/>
+   <input placeholder="Иванов Иван Иванович" type="text" name="fio" style="width:450px"
+   required pattern="^[А-яA-z\s]{2,}$"
+   title="Ваше Фамилия Имя Отчество не должно быть короче 2-х символов"></p>
+   <p>E-mail <font color="red"><sup> * </sup></font>: <br/>
+   <input placeholder="ivanov@mail.ru" type="email" name="user_e-mail" style="width:450px"
+   required pattern="^.+@.+\..+$"
+   title="Ваш адрес электронной почты"></p>
+   <p>Выберите категорию <font color="red"><sup> * </sup></font>: <br/>
+       <select required name="category[]" size=<?=$res_row[0] ?>  multiple="yes" title="Можно выбрать несколько категорий">';
+    <? foreach($items as $item){
+    echo '<option>'.$item['category'].'</option>';
+    }
+    echo '</select>'; $result->close();$result_row->close();?>     
+   <p>Ваш отзыв<font color="red"><sup> * </sup></font>: <br/> 
+   <textarea name="comment" rows="3" cols="80" required pattern="^[\s\S]{1,1000}$" title="Ваш отзыв (не более 1000 знаков)"></textarea></p>
+<table width="300">
+    <tr>
+      <td><input type="submit" value="Отправить"></td>
+	  <td><input type="reset"></td><br/>
+	  </tr>
+	  </table>
+	  <p><font color="red"><sup> * </sup></font> - обязательно для заполнения.<br/>
+  </form>
+ </body>
+</html>
